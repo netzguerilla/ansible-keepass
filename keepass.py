@@ -25,18 +25,18 @@ DOCUMENTATION = """
     version_added: '0.2'
     short_description: fetch data from KeePass file
     description:
-        - This lookup returns a value of a property of a KeePass entry 
+        - This lookup returns a value of a property of a KeePass entry
         - which fetched by given path
     options:
       _terms:
-        description: 
+        description:
           - first is a path to KeePass entry
           - second is a property name of the entry, e.g. username or password
           - third (optional property) if true custem_field_property is return
         required: True
     notes:
       - https://github.com/viczem/ansible-keepass
-    
+
     example:
       - "{{ lookup('keepass', 'path/to/entry', 'password') }}"
 """
@@ -51,10 +51,10 @@ class LookupModule(LookupBase):
         entry_path = terms[0].strip('/')
         entry_attr = terms[1]
         enable_custom_attr = False
-        
+
         if len(terms) == 3:
             enable_custom_attr = terms[2]
-        
+
         kp_dbx = variables.get('keepass_dbx', '')
         kp_dbx = os.path.realpath(os.path.expanduser(kp_dbx))
         if os.path.isfile(kp_dbx):
