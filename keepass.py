@@ -13,7 +13,6 @@ import os
 import json
 import socket
 import tempfile
-from pykeepass import PyKeePass
 from construct.core import ChecksumError
 from ansible.errors import AnsibleError
 from ansible.plugins.lookup import LookupBase
